@@ -1,0 +1,30 @@
+.head {
+    height: 50px;
+    margin-left:auto;
+    margin-right: auto;
+    font-family: 'Diablo', sans-serif;
+    text-align: center;
+    background-color: grey;
+    border: solid 1px black;
+}
+.field {
+    margin-left:auto;
+    margin-right: auto;
+    overflow : hidden;
+    border: solid 1px black;
+}
+.counter {
+    margin-left:30px;
+    margin-top: 5px;
+    float: left;
+    width: 80px;
+}
+.time {
+    margin-right:30px;
+    margin-top: 5px;
+    float: right;
+}
+.logo {
+    display:inline-block;
+    margin-right: 5%;
+}
