@@ -23,12 +23,12 @@ export class Game {
         } else if (this.index == 1) {
             this.sign = OPTIONS.plus;
         }
-        target.setAttribute("src", `${OPTIONS.image_folder}gif/${this.index}.png`);
         if (this.sign == OPTIONS.plus) {
             this.index++;
-        } else {
+        } else if (this.sign == OPTIONS.minus) {
             this.index--;
         }
+        target.setAttribute("src", `${OPTIONS.image_folder}gif/${this.index}.png`);
     }
     run_speed_up() {
         this.speed = setInterval(() => { this.speed_up() }, 10000);
