@@ -20,7 +20,6 @@ export const OPTIONS = {
     plus: "plus",
     minus: "minus",
     count_zero: 6,
-    img_in_gif: 14,
     apple_num: [1, 2, 3],
     grass_num: [1, 2, 3],
     game_speed: 100,

@@ -14,22 +14,6 @@ export class Game {
         this.arr_body = [];
         this.body_direction = [];
         this.grass_coordinates = [];
-        setInterval(() => { this.logo_animation() }, 20);
-    }
-    logo_animation() {
-        if (this.index == OPTIONS.img_in_gif) {
-            this.sign = OPTIONS.minus;
-        } else if (this.index == 1) {
-            this.sign = OPTIONS.plus;
-        }
-        if (this.sign == OPTIONS.plus) {
-            this.index++;
-        } else if (this.sign == OPTIONS.minus) {
-            this.index--;
-        }
-        let img = new Image();
-        img.src = `${OPTIONS.image_folder}gif/${this.index}.png`;
-        document.querySelector(".logo").replaceChildren(img);
     }
     run_speed_up() {
         this.speed = setInterval(() => { this.speed_up() }, 10000);
