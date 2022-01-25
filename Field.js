@@ -20,12 +20,12 @@ export class Field {
     }
     create_button(name) {
         this.element = document.createElement("div");
-        this.element.style = `width: 50px; height: 50px;`;
+        this.element.style = `width: ${OPTIONS.buttons_size * OPTIONS.div_size}px; height: ${OPTIONS.buttons_size * OPTIONS.div_size}px;`;
         document.querySelector(".button").appendChild(this.element);
         this.element.setAttribute("id", `${name}`);
 
         this.element_img = document.createElement("img");
-        this.element_img.style = "position: absolute;"
+        this.element_img.style = `display: table-cell; height: ${OPTIONS.buttons_size * OPTIONS.div_size}px; text-align: center; width: ${OPTIONS.buttons_size * OPTIONS.div_size}px; vertical-align: middle;`
         this.element_img.setAttribute("src", `${OPTIONS.image_folder}arrow_${name}.png`)
         document.getElementById(name).appendChild(this.element_img);
 

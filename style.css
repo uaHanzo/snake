@@ -33,15 +33,15 @@
     text-align: center;
 }
 #up {
-    margin-left: 50%;
-}
+    margin-left: auto;
+    margin-right: auto;
+   }
 #left {
-    float: left;
-    margin-left: 40%;
+    display:inline-block;
 }
 #right {
-    margin-left: 60%;
+    display:inline-block;
 }
 #down {
-    margin-left: 50%;
+    display:inline-block;
 }

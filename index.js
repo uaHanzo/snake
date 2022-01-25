@@ -7,6 +7,8 @@ import { Game } from "./Game.js";
 
 export const OPTIONS = {
     div_size: 10,
+    field_x: 50,
+    field_y: 50,
     image_folder: "image/",
     music_folder: "sound/",
     key_left: "ArrowLeft",
@@ -25,23 +27,32 @@ export const OPTIONS = {
     game_speed: 100,
     apple_spawn_speed: 2000,
     body_size: 10,
-    devive_list: /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/
+    devive_list: /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini|^((?!chrome|android).)*safari/,
+    buttons_size: 0,
 };
 
 //create field
-const field_x = 50;
-const field_y = 50;
+let mobile_x_blocks = Math.round(screen.width / 10);
+if (OPTIONS.devive_list.test(navigator.userAgent)) {
+    OPTIONS.field_x = mobile_x_blocks - 2;
+
+    let mobile_y_blocks = Math.round(screen.height / 10);
+    let button_blocks = Math.round(mobile_y_blocks / 4);
+    OPTIONS.field_y = mobile_y_blocks - button_blocks - 5; //50px = height of "head"
+    OPTIONS.buttons_size = Math.floor(button_blocks / 2); // 2 = field right side margin
+}
+
 function field_size() {
     let field = document.querySelector(".field");
     let head = document.querySelector(".head");
     field.style = `background-image: url("${OPTIONS.image_folder}grass.png");`;
-    field.style.width = field_x * OPTIONS.div_size + "px";
-    field.style.height = field_y * OPTIONS.div_size + "px";
-    head.style.width = field_x * OPTIONS.div_size + "px";
+    field.style.width = OPTIONS.field_x * OPTIONS.div_size + "px";
+    field.style.height = OPTIONS.field_y * OPTIONS.div_size + "px";
+    head.style.width = OPTIONS.field_x * OPTIONS.div_size + "px";
 }
 field_size();
-for (let j = field_y; j > 0; j--) {
-    for (let i = 0; i < field_x; i++) {
+for (let j = OPTIONS.field_y; j > 0; j--) {
+    for (let i = 0; i < OPTIONS.field_x; i++) {
         let field;
         field = new Field(i, j);
         field.create_field();
@@ -64,14 +75,14 @@ HTMLAudioElement.prototype.stop = function () {
 const grass_count = 10;
 for (let i = 0; i < grass_count; i++) {
     let grass;
-    grass = new Grass(field_x, field_y, game);
+    grass = new Grass(OPTIONS.field_x, OPTIONS.field_y, game);
 };
 
 let snake;
-snake = new Snake(field_x, field_y, sound, game);
+snake = new Snake(OPTIONS.field_x, OPTIONS.field_y, sound, game);
 
 let apple;
-apple = new Apple(field_x, field_y, sound, snake, game);
+apple = new Apple(OPTIONS.field_x, OPTIONS.field_y, sound, snake, game);
 
 function check_key(e) {
     if (game.score == 0) {
@@ -118,7 +129,7 @@ document.querySelector("body").onkeydown = check_key;
 
 if (OPTIONS.devive_list.test(navigator.userAgent)) {
     let button = new Field;
-    let name = ["up", "left", "right", "down"];
+    let name = ["up", "left", "down", "right"];
     for (let i = 0; i < name.length; i++) {
         button.create_button(name[i]);
     }
