@@ -18,4 +18,16 @@ export class Field {
         this.element_img.style = "position: absolute; display: block;"
         document.getElementById(`${this.x + 1},${this.y}`).appendChild(this.element_img);
     }
+    create_button(name) {
+        this.element = document.createElement("div");
+        this.element.style = `width: 50px; height: 50px;`;
+        document.querySelector(".button").appendChild(this.element);
+        this.element.setAttribute("id", `${name}`);
+
+        this.element_img = document.createElement("img");
+        this.element_img.style = "position: absolute;"
+        this.element_img.setAttribute("src", `${OPTIONS.image_folder}arrow_${name}.png`)
+        document.getElementById(name).appendChild(this.element_img);
+
+    }
 }

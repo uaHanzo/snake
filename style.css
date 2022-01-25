@@ -1,13 +1,13 @@
 .head {
     height: 50px;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
     text-align: center;
     background-color: grey;
     border: solid 1px black;
 }
 .field {
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
     overflow : hidden;
     border: solid 1px black;
@@ -26,4 +26,22 @@
 .logo {
     display:inline-block;
     margin-right: 5%;
+}
+.button {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+#up {
+    margin-left: 50%;
+}
+#left {
+    float: left;
+    margin-left: 40%;
+}
+#right {
+    margin-left: 60%;
+}
+#down {
+    margin-left: 50%;
 }

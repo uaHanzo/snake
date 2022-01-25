@@ -25,6 +25,7 @@ export const OPTIONS = {
     game_speed: 100,
     apple_spawn_speed: 2000,
     body_size: 10,
+    devive_list: /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/
 };
 
 //create field
@@ -114,3 +115,17 @@ function go(param) {
     snake.interval = setInterval(() => { snake.move(param) }, OPTIONS.game_speed);
 }
 document.querySelector("body").onkeydown = check_key;
+
+if (OPTIONS.devive_list.test(navigator.userAgent)) {
+    let button = new Field;
+    let name = ["up", "left", "right", "down"];
+    for (let i = 0; i < name.length; i++) {
+        button.create_button(name[i]);
+    }
+    function set_side(e) {
+        let touch_name = e.path[1].id.charAt(0).toUpperCase() + e.path[1].id.slice(1);
+        let touch = { key: "Arrow" + touch_name };
+        check_key(touch);
+    }
+    document.querySelector("body").addEventListener("touchstart", set_side);
+}
