@@ -27,16 +27,16 @@ export const OPTIONS = {
     game_speed: 100,
     apple_spawn_speed: 2000,
     body_size: 10,
-    devive_list: /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini|^((?!chrome|android).)*safari/,
+    devive_list: /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i,
     buttons_size: 0,
 };
 
 //create field
-let mobile_x_blocks = Math.round(screen.width / 10);
+let mobile_x_blocks = Math.round(document.documentElement.clientWidth / 10);
 if (OPTIONS.devive_list.test(navigator.userAgent)) {
     OPTIONS.field_x = mobile_x_blocks - 2;
 
-    let mobile_y_blocks = Math.round(screen.height / 10);
+    let mobile_y_blocks = Math.round(document.documentElement.clientHeight / 10);
     let button_blocks = Math.round(mobile_y_blocks / 4);
     OPTIONS.field_y = mobile_y_blocks - button_blocks - 5; //50px = height of "head"
     OPTIONS.buttons_size = Math.floor(button_blocks / 2); // 2 = field right side margin
