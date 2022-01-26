@@ -132,11 +132,12 @@ if (OPTIONS.devive_list.test(navigator.userAgent)) {
     let name = ["up", "left", "down", "right"];
     for (let i = 0; i < name.length; i++) {
         button.create_button(name[i]);
+        document.querySelector(`.${name[i]}`).addEventListener("touchstart", set_side);
+        function set_side(e) {
+            let name = e.changedTouches[0].target.className;
+            let touch_name = name.charAt(0).toUpperCase() + name.slice(1);
+            let touch = { key: "Arrow" + touch_name };
+            check_key(touch);
+        }
     }
-    function set_side(e) {
-        let touch_name = e.path[1].id.charAt(0).toUpperCase() + e.path[1].id.slice(1);
-        let touch = { key: "Arrow" + touch_name };
-        check_key(touch);
-    }
-    document.querySelector("body").addEventListener("touchstart", set_side);
 }

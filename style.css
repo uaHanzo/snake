@@ -32,16 +32,24 @@
     margin-right: auto;
     text-align: center;
 }
-#up {
+.up {
     margin-left: auto;
     margin-right: auto;
-   }
-#left {
-    display:inline-block;
+    border-color: transparent;
+    background-color: transparent;
+    display: block;
 }
-#right {
-    display:inline-block;
+.left {
+    float: left;   
+    border-color: transparent;
+    background-color: transparent;
 }
-#down {
-    display:inline-block;
+.right {
+    float: right;
+    border-color: transparent;
+    background-color: transparent;
+}
+.down {
+    border-color: transparent;
+    background-color: transparent;
 }

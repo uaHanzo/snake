@@ -19,15 +19,17 @@ export class Field {
         document.getElementById(`${this.x + 1},${this.y}`).appendChild(this.element_img);
     }
     create_button(name) {
-        this.element = document.createElement("div");
+        this.element = document.createElement("button");
         this.element.style = `width: ${OPTIONS.buttons_size * OPTIONS.div_size}px; height: ${OPTIONS.buttons_size * OPTIONS.div_size}px;`;
         document.querySelector(".button").appendChild(this.element);
-        this.element.setAttribute("id", `${name}`);
+        this.element.setAttribute("class", `${name}`);
 
         this.element_img = document.createElement("img");
-        this.element_img.style = `display: table-cell; height: ${OPTIONS.buttons_size * OPTIONS.div_size}px; text-align: center; width: ${OPTIONS.buttons_size * OPTIONS.div_size}px; vertical-align: middle;`
+        this.element_img.style.height = `${OPTIONS.buttons_size * OPTIONS.div_size - 15}px`;
+        this.element_img.style.width = `${OPTIONS.buttons_size * OPTIONS.div_size - 15}px`;
+        this.element_img.setAttribute("class", `${name}`);
         this.element_img.setAttribute("src", `${OPTIONS.image_folder}arrow_${name}.png`)
-        document.getElementById(name).appendChild(this.element_img);
+        document.querySelector(`.${name}`).appendChild(this.element_img);
 
     }
 }
